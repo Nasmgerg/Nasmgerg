@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Technológiák és statisztikák">
+<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+<rect x="0.5" y="0.5" width="1199" height="289" rx="10" fill="#ffffff" stroke="#ead7dc"/>
+<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="#c8102e">MOTORHÁZTETŐ ALATT</text>
+<text x="1160" y="44" font-size="11" fill="#6f5960" text-anchor="end">frissítve 2026.10.26.</text>
+<text x="40" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">ÜZEMANYAG</text>
+<text x="40" y="104" font-size="10" fill="#6f5960">nyelvek a repóimban</text>
+<text x="470" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FELSZERELTSÉG</text>
+<text x="470" y="104" font-size="10" fill="#6f5960">keretrendszerek, eszközök</text>
+<text x="890" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FUTÁSTELJESÍTMÉNY</text>
+<text x="890" y="104" font-size="10" fill="#6f5960">az elmúlt egy évben</text>
+<rect x="440" y="76" width="1" height="180" fill="#ead7dc"/>
+<rect x="860" y="76" width="1" height="180" fill="#ead7dc"/>
+<text x="40" y="138" font-size="12" fill="#2a1d21">JavaScript</text>
+<rect x="150" y="130" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="130" width="200.0" height="8" rx="4" fill="#c8102e"/>
+<text x="410" y="138" font-size="12" fill="#6f5960" text-anchor="end">29%</text>
+<text x="40" y="162" font-size="12" fill="#2a1d21">PHP</text>
+<rect x="150" y="154" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="154" width="152.2" height="8" rx="4" fill="#d6334c"/>
+<text x="410" y="162" font-size="12" fill="#6f5960" text-anchor="end">22%</text>
+<text x="40" y="186" font-size="12" fill="#2a1d21">Python</text>
+<rect x="150" y="178" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="178" width="150.4" height="8" rx="4" fill="#e05a6c"/>
+<text x="410" y="186" font-size="12" fill="#6f5960" text-anchor="end">22%</text>
+<text x="40" y="210" font-size="12" fill="#2a1d21">Java</text>
+<rect x="150" y="202" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="202" width="76.2" height="8" rx="4" fill="#e9808d"/>
+<text x="410" y="210" font-size="12" fill="#6f5960" text-anchor="end">11%</text>
+<text x="40" y="234" font-size="12" fill="#2a1d21">HTML</text>
+<rect x="150" y="226" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="226" width="63.2" height="8" rx="4" fill="#f0a3ac"/>
+<text x="410" y="234" font-size="12" fill="#6f5960" text-anchor="end">9%</text>
+<text x="40" y="258" font-size="12" fill="#2a1d21">CSS</text>
+<rect x="150" y="250" width="200" height="8" rx="4" fill="#f3e9eb"/>
+<rect x="150" y="250" width="41.9" height="8" rx="4" fill="#f5c2c8"/>
+<text x="410" y="258" font-size="12" fill="#6f5960" text-anchor="end">6%</text>
+<rect x="470.0" y="124" width="74.8" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="507.4" y="141" font-size="12" fill="#c8102e" text-anchor="middle">Laravel</text>
+<rect x="552.8" y="124" width="96.5" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="601.0" y="141" font-size="12" fill="#c8102e" text-anchor="middle">PostgreSQL</text>
+<rect x="657.2" y="124" width="74.8" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="694.6" y="141" font-size="12" fill="#c8102e" text-anchor="middle">PostGIS</text>
+<rect x="740.0" y="124" width="60.2" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="770.1" y="141" font-size="12" fill="#c8102e" text-anchor="middle">MySQL</text>
+<rect x="470.0" y="158" width="96.5" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="518.2" y="175" font-size="12" fill="#c8102e" text-anchor="middle">Oracle SQL</text>
+<rect x="574.5" y="158" width="67.5" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="608.2" y="175" font-size="12" fill="#c8102e" text-anchor="middle">Docker</text>
+<rect x="650.0" y="158" width="60.2" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="680.1" y="175" font-size="12" fill="#c8102e" text-anchor="middle">Linux</text>
+<rect x="718.2" y="158" width="45.8" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="741.1" y="175" font-size="12" fill="#c8102e" text-anchor="middle">Git</text>
+<rect x="470.0" y="192" width="125.5" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="532.8" y="209" font-size="12" fill="#c8102e" text-anchor="middle">GitHub Actions</text>
+<rect x="603.5" y="192" width="89.2" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="648.1" y="209" font-size="12" fill="#c8102e" text-anchor="middle">Streamlit</text>
+<rect x="700.8" y="192" width="67.5" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="734.5" y="209" font-size="12" fill="#c8102e" text-anchor="middle">Phaser</text>
+<rect x="470.0" y="226" width="82.0" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
+<text x="511.0" y="243" font-size="12" fill="#c8102e" text-anchor="middle">Three.js</text>
+<text x="890" y="160" font-size="34" font-weight="700" fill="#c8102e">209</text>
+<text x="890" y="180" font-size="11" fill="#6f5960">hozzájárulás</text>
+<text x="1040" y="160" font-size="34" font-weight="700" fill="#c8102e">32</text>
+<text x="1040" y="180" font-size="11" fill="#6f5960">nap leghosszabb széria</text>
+<text x="890" y="236" font-size="34" font-weight="700" fill="#c8102e">32</text>
+<text x="890" y="256" font-size="11" fill="#6f5960">aktív nap</text>
+<text x="1040" y="236" font-size="34" font-weight="700" fill="#c8102e">9</text>
+<text x="1040" y="256" font-size="11" fill="#6f5960">publikus repó</text>
+</svg>
