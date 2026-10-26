@@ -1,0 +1,35 @@
+name: Contribution drift
+
+on:
+  schedule:
+    - cron: "17 3 * * *"   # minden nap 03:17 UTC-kor
+  workflow_dispatch:        # kézzel is indítható az Actions fülön
+  push:
+    branches: [main]
+    paths: ["drift/**", ".github/workflows/drift.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Animáció generálása
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python drift/generate.py "${{ github.repository_owner }}" dist
+
+      - name: Mentés a repóba
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist
+          git diff --cached --quiet || git commit -m "Contribution drift frissítése"
+          git push
