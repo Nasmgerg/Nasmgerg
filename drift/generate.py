@@ -1,14 +1,3 @@
-"""
-Contribution drift – a GitHub contribution-gráfodon egy piros autó halad végig
-soronként, a sorok végén driftelve fordul, és felszedi a cellákat.
-
-Használat:
-  GITHUB_TOKEN=... python drift/generate.py <felhasználónév> <kimeneti mappa>
-  python drift/generate.py --demo <kimeneti mappa>   (minta adatokkal, token nélkül)
-
-Két fájlt készít: drift-dark.svg és drift-light.svg.
-Csak a Python standard könyvtárát használja.
-"""
 import datetime as dt
 import json
 import math
@@ -28,6 +17,10 @@ TT = 0.6          # egy fordulás ideje (s)
 END = 1.6         # a kör végi kifutás (s)
 FPS = 25          # mintavételezés az autó mozgásához
 
+# A „Felszereltség” sor: ezt kézzel bővítheted, ha új technológiát tanulsz.
+EQUIPMENT = ["Laravel", "PostgreSQL", "PostGIS", "MySQL", "Oracle SQL", "Docker",
+             "Linux", "Git", "GitHub Actions", "Streamlit", "Phaser", "Three.js"]
+
 MONTHS_HU = ["Jan", "Feb", "Már", "Ápr", "Máj", "Jún", "Júl", "Aug", "Szep", "Okt", "Nov", "Dec"]
 LEVELS = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
 
@@ -40,8 +33,10 @@ THEMES = {
                   mark="#d4c2c8", puff="#9a8a90", puff_a=0.35, beam=0.22),
 }
 
-QUERY = """query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{
-totalContributions weeks{contributionDays{contributionLevel date weekday}}}}}}"""
+QUERY = """query($login:String!){user(login:$login){
+contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionLevel date weekday}}}}
+repositories(first:100, ownerAffiliations:OWNER, privacy:PUBLIC, isFork:false){totalCount nodes{name
+languages(first:10, orderBy:{field:SIZE, direction:DESC}){edges{size node{name}}}}}}}"""
 
 
 # ---------------------------------------------------------------- adatok
@@ -56,14 +51,27 @@ def fetch(login, token):
         data = json.load(r)
     if "errors" in data:
         raise SystemExit(f"GitHub API hiba: {data['errors']}")
-    cal = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+    user = data["data"]["user"]
+    cal = user["contributionsCollection"]["contributionCalendar"]
     weeks = []
     for w in cal["weeks"]:
         col = [None] * 7
         for d in w["contributionDays"]:
             col[d["weekday"]] = (LEVELS[d["contributionLevel"]], d["date"])
         weeks.append(col)
-    return weeks, cal["totalContributions"]
+    # Nyelvek: minden repó egyenlő súllyal számít, így egy beemelt külső könyvtár
+    # (pl. egy teljes Three.js) nem torzítja el az arányokat.
+    share = {}
+    repos = [r for r in user["repositories"]["nodes"] if r["name"].lower() != login.lower()]
+    for repo in repos:
+        edges = repo["languages"]["edges"]
+        tot = sum(e["size"] for e in edges)
+        for e in edges:
+            if tot:
+                share[e["node"]["name"]] = share.get(e["node"]["name"], 0) + e["size"] / tot
+    n = max(len([r for r in repos if r["languages"]["edges"]]), 1)
+    langs = sorted(((k, v / n) for k, v in share.items()), key=lambda x: -x[1])
+    return weeks, cal["totalContributions"], langs, len(repos)
 
 
 def demo():
@@ -82,7 +90,8 @@ def demo():
             total += [0, 1, 3, 6, 10][lvl]
             col.append((lvl, day.isoformat()))
         weeks.append(col)
-    return weeks, total
+    langs = [("JavaScript", 0.34), ("PHP", 0.24), ("Python", 0.2), ("Java", 0.1), ("HTML", 0.07), ("CSS", 0.05)]
+    return weeks, total, langs, 11
 
 
 # ---------------------------------------------------------------- mozgás
@@ -275,23 +284,105 @@ def render(weeks, total, theme):
     return "\n".join(out)
 
 
+STACK = {
+    "dark": dict(bg="#110b0f", border="#2a1a20", text="#eadfe2", muted="#a08890", red="#e0243a",
+                 track="#241a1d", chip_bg="#1d1215", bars=["#e0243a", "#c41f33", "#a51a2c", "#871626", "#6c1220", "#55101b"]),
+    "light": dict(bg="#ffffff", border="#ead7dc", text="#2a1d21", muted="#6f5960", red="#c8102e",
+                  track="#f3e9eb", chip_bg="#fdf3f4", bars=["#c8102e", "#d6334c", "#e05a6c", "#e9808d", "#f0a3ac", "#f5c2c8"]),
+}
+
+
+def streaks(weeks):
+    days = sorted(d for col in weeks for d in col if d)
+    best = cur = active = 0
+    for lvl, _ in days:
+        if lvl > 0:
+            cur += 1
+            active += 1
+            best = max(best, cur)
+        else:
+            cur = 0
+    return best, active
+
+
+def esc(t):
+    return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def render_stack(weeks, total, langs, repo_count, theme):
+    th = STACK[theme]
+    W, H = 1200, 290
+    best, active = streaks(weeks)
+    out = []
+    o = out.append
+    o(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
+      f'aria-label="Technológiák és statisztikák">')
+    o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>')
+    o(f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{th["bg"]}" stroke="{th["border"]}"/>')
+    o(f'<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="{th["red"]}">MOTORHÁZTETŐ ALATT</text>')
+    o(f'<text x="{W - 40}" y="44" font-size="11" fill="{th["muted"]}" text-anchor="end">'
+      f'frissítve {dt.date.today().strftime("%Y.%m.%d.")}</text>')
+
+    heads = ((40, "ÜZEMANYAG", "nyelvek a repóimban"), (470, "FELSZERELTSÉG", "keretrendszerek, eszközök"),
+             (890, "FUTÁSTELJESÍTMÉNY", "az elmúlt egy évben"))
+    for x, h, sub in heads:
+        o(f'<text x="{x}" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="{th["text"]}">{h}</text>')
+        o(f'<text x="{x}" y="104" font-size="10" fill="{th["muted"]}">{sub}</text>')
+    o(f'<rect x="440" y="76" width="1" height="{H - 110}" fill="{th["border"]}"/>')
+    o(f'<rect x="860" y="76" width="1" height="{H - 110}" fill="{th["border"]}"/>')
+
+    # nyelvek
+    top = langs[:6]
+    for i, (name, share) in enumerate(top):
+        y = 134 + i * 24
+        pct = share * 100
+        o(f'<text x="40" y="{y + 4}" font-size="12" fill="{th["text"]}">{esc(name)}</text>')
+        o(f'<rect x="150" y="{y - 4}" width="200" height="8" rx="4" fill="{th["track"]}"/>')
+        o(f'<rect x="150" y="{y - 4}" width="{max(4, 200 * share / top[0][1]):.1f}" height="8" rx="4" fill="{th["bars"][i]}"/>')
+        o(f'<text x="410" y="{y + 4}" font-size="12" fill="{th["muted"]}" text-anchor="end">{pct:.0f}%</text>')
+
+    # felszereltség: piros címkék, sorba tördelve
+    x, y = 470, 124
+    for item in EQUIPMENT:
+        w = len(item) * 7.25 + 24
+        if x + w > 830:
+            x, y = 470, y + 34
+        o(f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="26" rx="13" fill="{th["chip_bg"]}" stroke="{th["red"]}"/>')
+        o(f'<text x="{x + w / 2:.1f}" y="{y + 17}" font-size="12" fill="{th["red"]}" text-anchor="middle">{esc(item)}</text>')
+        x += w + 8
+
+    # számok
+    stats = ((total, "hozzájárulás"), (best, "nap leghosszabb széria"), (active, "aktív nap"), (repo_count, "publikus repó"))
+    for i, (val, lbl) in enumerate(stats):
+        sx = 890 + (i % 2) * 150
+        sy = 160 + (i // 2) * 76
+        o(f'<text x="{sx}" y="{sy}" font-size="34" font-weight="700" fill="{th["red"]}">{val}</text>')
+        o(f'<text x="{sx}" y="{sy + 20}" font-size="11" fill="{th["muted"]}">{lbl}</text>')
+    o('</svg>')
+    return "\n".join(out)
+
+
 def main():
     args = sys.argv[1:]
     if len(args) != 2:
         raise SystemExit(__doc__)
     who, outdir = args
     if who == "--demo":
-        weeks, total = demo()
+        weeks, total, langs, repo_count = demo()
     else:
         token = os.environ.get("GITHUB_TOKEN")
         if not token:
             raise SystemExit("Hiányzik a GITHUB_TOKEN környezeti változó.")
-        weeks, total = fetch(who, token)
+        weeks, total, langs, repo_count = fetch(who, token)
     os.makedirs(outdir, exist_ok=True)
     for theme in THEMES:
         path = os.path.join(outdir, f"drift-{theme}.svg")
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(render(weeks, total, theme))
+        print("kész:", path)
+        path = os.path.join(outdir, f"stack-{theme}.svg")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(render_stack(weeks, total, langs, repo_count, theme))
         print("kész:", path)
 
 
