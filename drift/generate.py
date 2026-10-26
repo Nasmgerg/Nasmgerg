@@ -162,8 +162,7 @@ def render(weeks, total, theme):
 
     o(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
       f'role="img" aria-label="Contribution-gráf: {total} hozzájárulás az elmúlt évben">')
-    o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}'
-      '@media (prefers-reduced-motion:reduce){.car,.fx{display:none}}</style>')
+    o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>')
     o(f'<rect width="{W}" height="{H}" rx="10" fill="{th["bg"]}"/>')
 
     # fejléc + jelmagyarázat
