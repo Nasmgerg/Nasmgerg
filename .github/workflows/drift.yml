@@ -23,7 +23,8 @@ jobs:
 
       - name: Animáció generálása
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Ha van DRIFT_TOKEN titok, azzal a privát hozzájárulások is beleszámítanak.
+          GITHUB_TOKEN: ${{ secrets.DRIFT_TOKEN || secrets.GITHUB_TOKEN }}
         run: python drift/generate.py "${{ github.repository_owner }}" dist
 
       - name: Mentés a repóba
