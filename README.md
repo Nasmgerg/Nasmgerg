@@ -6,30 +6,23 @@
 
 ### 走 &nbsp;Motorháztető alatt
 
-<p>
-  <img src="https://img.shields.io/badge/Python-140b10?style=flat-square&logo=python&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/PHP-140b10?style=flat-square&logo=php&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Laravel-140b10?style=flat-square&logo=laravel&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Java-140b10?style=flat-square&logo=openjdk&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/JavaScript-140b10?style=flat-square&logo=javascript&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/C%23-140b10?style=flat-square&logo=dotnet&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/PostgreSQL-140b10?style=flat-square&logo=postgresql&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/PostGIS-140b10?style=flat-square&logo=postgresql&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/MySQL-140b10?style=flat-square&logo=mysql&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Oracle_SQL-140b10?style=flat-square&logo=oracle&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Docker-140b10?style=flat-square&logo=docker&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Linux-140b10?style=flat-square&logo=linux&logoColor=f4a7b9" />
-  <img src="https://img.shields.io/badge/Git-140b10?style=flat-square&logo=git&logoColor=f4a7b9" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dist/stack-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="dist/stack-light.svg" />
+  <img alt="Nyelvek, keretrendszerek és statisztikák" src="dist/stack-light.svg" width="100%" />
+</picture>
 
 ### 峠 &nbsp;Garázs
 
-| | Projekt | Motor | Leírás |
+| | Modell | Motor | Mire képes |
 |:-:|---|---|---|
-| 01 | [**szakdolgozatok-nyilvantarto**](https://github.com/Nasmgerg/szakdolgozatok-nyilvantarto) | PHP | Szakdolgozatok nyilvántartására szolgáló webalkalmazás |
-| 02 | [**quiz**](https://github.com/Nasmgerg/quiz) | PHP | Kvízalkalmazás |
-| 03 | [**Casino-Mogul**](https://github.com/Nasmgerg/Casino-Mogul) | JavaScript | Böngészős kaszinó-menedzser játék |
-| 04 | [**memoriajatek**](https://github.com/Nasmgerg/memoriajatek) | Python | Memóriajáték |
+| 01 | [**AlgoMario**](https://github.com/Nasmgerg/AlgoMario) | JavaScript · Phaser · Vite | Hat útkereső algoritmus (BFS, DFS, Dijkstra, A\*, Greedy, Best-First) versenyez ugyanazon a pályán, mérhető eredményekkel és benchmarkkal |
+| 02 | [**AI Usage & Academic Performance**](https://github.com/Nasmgerg/AI-Usage-And-Student-Academic-Performance-Analysis) | Python · Streamlit · Docker | 50 000 soros adathalmaz elemzése KPI-okkal és korrelációkkal, tesztekkel és CI-jal · [élő demó](https://ai-usage-and-student-academic.onrender.com) |
+| 03 | [**quiz**](https://github.com/Nasmgerg/quiz) | PHP · Oracle SQL | Kvízrendszer szerepkörökkel, tárolt eljárásokkal, ranglistával és statisztikákkal |
+| 04 | [**szakdolgozatok-nyilvantarto**](https://github.com/Nasmgerg/szakdolgozatok-nyilvantarto) | PHP · MySQL | Szakdolgozat-nyilvántartó admin, hallgató és témavezető szerepkörökkel |
+| 05 | [**Mario-A-**](https://github.com/Nasmgerg/Mario-A-) | Java | A\*-alapú ágens, ami időkereten belül tervezi meg Mario útját |
+| 06 | [**Magic-forest**](https://github.com/Nasmgerg/Magic-forest) | Three.js | Interaktív 3D varázserdő árnyékokkal, animációval, nappal–éjszaka váltással |
+| 07 | [**Casino-Mogul**](https://github.com/Nasmgerg/Casino-Mogul) | JavaScript · Canvas | Körökre osztott, kétjátékos stratégiai játék |
 
 ### 道 &nbsp;Útnapló
 
