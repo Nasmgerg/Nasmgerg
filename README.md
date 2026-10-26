@@ -4,30 +4,30 @@
 
 <br />
 
-### 走 &nbsp;Motorháztető alatt
+### 改 &nbsp;Under the Hood
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/stack-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="dist/stack-light.svg" />
-  <img alt="Nyelvek, keretrendszerek és statisztikák" src="dist/stack-light.svg" width="100%" />
+  <img alt="Languages, tools and stats" src="dist/stack-light.svg" width="100%" />
 </picture>
 
-### 峠 &nbsp;Garázs
+### 車 &nbsp;Built, Not Bought
 
-| | Modell | Motor | Mire képes |
+| | Build | Engine | What it does |
 |:-:|---|---|---|
-| 01 | [**AlgoMario**](https://github.com/Nasmgerg/AlgoMario) | JavaScript · Phaser · Vite | Hat útkereső algoritmus (BFS, DFS, Dijkstra, A\*, Greedy, Best-First) versenyez ugyanazon a pályán, mérhető eredményekkel és benchmarkkal |
-| 02 | [**AI Usage & Academic Performance**](https://github.com/Nasmgerg/AI-Usage-And-Student-Academic-Performance-Analysis) | Python · Streamlit · Docker | 50 000 soros adathalmaz elemzése KPI-okkal és korrelációkkal, tesztekkel és CI-jal · [élő demó](https://ai-usage-and-student-academic.onrender.com) |
-| 03 | [**quiz**](https://github.com/Nasmgerg/quiz) | PHP · Oracle SQL | Kvízrendszer szerepkörökkel, tárolt eljárásokkal, ranglistával és statisztikákkal |
-| 04 | [**szakdolgozatok-nyilvantarto**](https://github.com/Nasmgerg/szakdolgozatok-nyilvantarto) | PHP · MySQL | Szakdolgozat-nyilvántartó admin, hallgató és témavezető szerepkörökkel |
-| 05 | [**Mario-A-**](https://github.com/Nasmgerg/Mario-A-) | Java | A\*-alapú ágens, ami időkereten belül tervezi meg Mario útját |
-| 06 | [**Magic-forest**](https://github.com/Nasmgerg/Magic-forest) | Three.js | Interaktív 3D varázserdő árnyékokkal, animációval, nappal–éjszaka váltással |
-| 07 | [**Casino-Mogul**](https://github.com/Nasmgerg/Casino-Mogul) | JavaScript · Canvas | Körökre osztott, kétjátékos stratégiai játék |
+| 01 | [**AlgoMario**](https://github.com/Nasmgerg/AlgoMario) | JavaScript · Phaser · Vite | Six pathfinding algorithms (BFS, DFS, Dijkstra, A\*, Greedy, Best-First) race on the same level, with measured results and a benchmark mode |
+| 02 | [**AI Usage & Academic Performance**](https://github.com/Nasmgerg/AI-Usage-And-Student-Academic-Performance-Analysis) | Python · Streamlit · Docker | Analytics dashboard over 50,000 rows: KPIs, correlations, filterable explorer, tests and CI · [live demo](https://ai-usage-and-student-academic.onrender.com) |
+| 03 | [**quiz**](https://github.com/Nasmgerg/quiz) | PHP · Oracle SQL | Quiz platform with roles, stored procedures, leaderboard and statistics |
+| 04 | [**szakdolgozatok-nyilvantarto**](https://github.com/Nasmgerg/szakdolgozatok-nyilvantarto) | PHP · MySQL | Thesis registry with admin, student and supervisor roles |
+| 05 | [**Mario-A-**](https://github.com/Nasmgerg/Mario-A-) | Java | A\* agent that plans Mario's route within a time budget |
+| 06 | [**Magic-forest**](https://github.com/Nasmgerg/Magic-forest) | Three.js | Interactive 3D forest with shadows, animation and a day/night switch |
+| 07 | [**Casino-Mogul**](https://github.com/Nasmgerg/Casino-Mogul) | JavaScript · Canvas | Turn-based two-player strategy game |
 
-### 道 &nbsp;Útnapló
+### 跡 &nbsp;Tire Marks
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="dist/drift-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="dist/drift-light.svg" />
-  <img alt="Contribution-gráf, amin egy piros autó driftel végig" src="dist/drift-light.svg" width="100%" />
+  <img alt="Contribution graph with a red car drifting through it" src="dist/drift-light.svg" width="100%" />
 </picture>
