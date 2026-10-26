@@ -17,11 +17,11 @@ TT = 0.6          # egy fordulás ideje (s)
 END = 1.6         # a kör végi kifutás (s)
 FPS = 25          # mintavételezés az autó mozgásához
 
-# A „Felszereltség” sor: ezt kézzel bővítheted, ha új technológiát tanulsz.
+# A „Bolt-ons” sor: ezt kézzel bővítheted, ha új technológiát tanulsz.
 EQUIPMENT = ["Laravel", "PostgreSQL", "PostGIS", "MySQL", "Oracle SQL", "Docker",
              "Linux", "Git", "GitHub Actions", "Streamlit", "Phaser", "Three.js"]
 
-MONTHS_HU = ["Jan", "Feb", "Már", "Ápr", "Máj", "Jún", "Júl", "Aug", "Szep", "Okt", "Nov", "Dec"]
+MONTHS_HU = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 LEVELS = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
 
 THEMES = {
@@ -170,17 +170,17 @@ def render(weeks, total, theme):
     o = out.append
 
     o(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
-      f'role="img" aria-label="Contribution-gráf: {total} hozzájárulás az elmúlt évben">')
+      f'role="img" aria-label="Contribution graph: {total} contributions in the last year">')
     o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>')
     o(f'<rect width="{W}" height="{H}" rx="10" fill="{th["bg"]}"/>')
 
     # fejléc + jelmagyarázat
     o(f'<text x="{X0}" y="38" font-size="12" letter-spacing="3.4" fill="{th["accent"]}">CONTRIBUTION DRIFT</text>')
     lx = W - 76 - 5 * 16 - 64
-    o(f'<text x="{lx - 8}" y="38" font-size="11" fill="{th["muted"]}" text-anchor="end">Kevesebb</text>')
+    o(f'<text x="{lx - 8}" y="38" font-size="11" fill="{th["muted"]}" text-anchor="end">Less</text>')
     for i, col in enumerate(th["levels"]):
         o(f'<rect x="{lx + i * 16}" y="28" width="12" height="12" rx="2" fill="{col}"/>')
-    o(f'<text x="{lx + 5 * 16 + 4}" y="38" font-size="11" fill="{th["muted"]}">Több</text>')
+    o(f'<text x="{lx + 5 * 16 + 4}" y="38" font-size="11" fill="{th["muted"]}">More</text>')
 
     # hónapok és napok
     labels, last_m = [], None
@@ -197,7 +197,7 @@ def render(weeks, total, theme):
     for c, m in labels:
         if c <= cols - 3:
             o(f'<text x="{X0 + c * P}" y="74" font-size="11" fill="{th["muted"]}">{MONTHS_HU[m - 1]}</text>')
-    for r, lbl in ((1, "H"), (3, "Sze"), (5, "P")):
+    for r, lbl in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         o(f'<text x="34" y="{f(tr.cy(r) + 4)}" font-size="11" fill="{th["muted"]}">{lbl}</text>')
 
     # cellák: a felszedettek az autó áthaladásakor kiürülnek, a kör végén visszatöltődnek
@@ -279,7 +279,7 @@ def render(weeks, total, theme):
       '<rect x="0" y="9" width="2" height="3" fill="#ff2a3d"/>'
       '</g></g></g>')
 
-    o(f'<text x="{X0}" y="{H - 18}" font-size="11" fill="{th["muted"]}">{total} hozzájárulás az elmúlt évben</text>')
+    o(f'<text x="{X0}" y="{H - 18}" font-size="11" fill="{th["muted"]}">{total} contributions in the last year</text>')
     o('</svg>')
     return "\n".join(out)
 
@@ -316,15 +316,15 @@ def render_stack(weeks, total, langs, repo_count, theme):
     out = []
     o = out.append
     o(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
-      f'aria-label="Technológiák és statisztikák">')
+      f'aria-label="Languages, tools and stats">')
     o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>')
     o(f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{th["bg"]}" stroke="{th["border"]}"/>')
-    o(f'<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="{th["red"]}">MOTORHÁZTETŐ ALATT</text>')
+    o(f'<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="{th["red"]}">UNDER THE HOOD</text>')
     o(f'<text x="{W - 40}" y="44" font-size="11" fill="{th["muted"]}" text-anchor="end">'
-      f'frissítve {dt.date.today().strftime("%Y.%m.%d.")}</text>')
+      f'last dyno run {dt.date.today().isoformat()}</text>')
 
-    heads = ((40, "ÜZEMANYAG", "nyelvek a repóimban"), (470, "FELSZERELTSÉG", "keretrendszerek, eszközök"),
-             (890, "FUTÁSTELJESÍTMÉNY", "az elmúlt egy évben"))
+    heads = ((40, "FUEL MIX", "what my repos run on"), (470, "BOLT-ONS", "frameworks &amp; tools"),
+             (890, "DYNO SHEET", "last 12 months"))
     for x, h, sub in heads:
         o(f'<text x="{x}" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="{th["text"]}">{h}</text>')
         o(f'<text x="{x}" y="104" font-size="10" fill="{th["muted"]}">{sub}</text>')
@@ -352,7 +352,7 @@ def render_stack(weeks, total, langs, repo_count, theme):
         x += w + 8
 
     # számok
-    stats = ((total, "hozzájárulás"), (best, "nap leghosszabb széria"), (active, "aktív nap"), (repo_count, "publikus repó"))
+    stats = ((total, "contributions"), (best, "day longest streak"), (active, "days on track"), (repo_count, "public builds"))
     for i, (val, lbl) in enumerate(stats):
         sx = 890 + (i % 2) * 150
         sy = 160 + (i // 2) * 76
