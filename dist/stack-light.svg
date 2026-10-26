@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Technológiák és statisztikák">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-label="Languages, tools and stats">
 <style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
 <rect x="0.5" y="0.5" width="1199" height="289" rx="10" fill="#ffffff" stroke="#ead7dc"/>
-<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="#c8102e">MOTORHÁZTETŐ ALATT</text>
-<text x="1160" y="44" font-size="11" fill="#6f5960" text-anchor="end">frissítve 2026.10.26.</text>
-<text x="40" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">ÜZEMANYAG</text>
-<text x="40" y="104" font-size="10" fill="#6f5960">nyelvek a repóimban</text>
-<text x="470" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FELSZERELTSÉG</text>
-<text x="470" y="104" font-size="10" fill="#6f5960">keretrendszerek, eszközök</text>
-<text x="890" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FUTÁSTELJESÍTMÉNY</text>
-<text x="890" y="104" font-size="10" fill="#6f5960">az elmúlt egy évben</text>
+<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="#c8102e">UNDER THE HOOD</text>
+<text x="1160" y="44" font-size="11" fill="#6f5960" text-anchor="end">last dyno run 2026-10-26</text>
+<text x="40" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FUEL MIX</text>
+<text x="40" y="104" font-size="10" fill="#6f5960">what my repos run on</text>
+<text x="470" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">BOLT-ONS</text>
+<text x="470" y="104" font-size="10" fill="#6f5960">frameworks &amp; tools</text>
+<text x="890" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">DYNO SHEET</text>
+<text x="890" y="104" font-size="10" fill="#6f5960">last 12 months</text>
 <rect x="440" y="76" width="1" height="180" fill="#ead7dc"/>
 <rect x="860" y="76" width="1" height="180" fill="#ead7dc"/>
 <text x="40" y="138" font-size="12" fill="#2a1d21">JavaScript</text>
@@ -59,12 +59,12 @@
 <text x="734.5" y="209" font-size="12" fill="#c8102e" text-anchor="middle">Phaser</text>
 <rect x="470.0" y="226" width="82.0" height="26" rx="13" fill="#fdf3f4" stroke="#c8102e"/>
 <text x="511.0" y="243" font-size="12" fill="#c8102e" text-anchor="middle">Three.js</text>
-<text x="890" y="160" font-size="34" font-weight="700" fill="#c8102e">210</text>
-<text x="890" y="180" font-size="11" fill="#6f5960">hozzájárulás</text>
+<text x="890" y="160" font-size="34" font-weight="700" fill="#c8102e">212</text>
+<text x="890" y="180" font-size="11" fill="#6f5960">contributions</text>
 <text x="1040" y="160" font-size="34" font-weight="700" fill="#c8102e">32</text>
-<text x="1040" y="180" font-size="11" fill="#6f5960">nap leghosszabb széria</text>
+<text x="1040" y="180" font-size="11" fill="#6f5960">day longest streak</text>
 <text x="890" y="236" font-size="34" font-weight="700" fill="#c8102e">32</text>
-<text x="890" y="256" font-size="11" fill="#6f5960">aktív nap</text>
+<text x="890" y="256" font-size="11" fill="#6f5960">days on track</text>
 <text x="1040" y="236" font-size="34" font-weight="700" fill="#c8102e">9</text>
-<text x="1040" y="256" font-size="11" fill="#6f5960">publikus repó</text>
+<text x="1040" y="256" font-size="11" fill="#6f5960">public builds</text>
 </svg>
