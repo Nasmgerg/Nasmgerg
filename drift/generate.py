@@ -25,12 +25,12 @@ MONTHS_HU = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct
 LEVELS = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
 
 THEMES = {
-    "dark": dict(bg="#110b0f", muted="#a08890", accent="#f4a7b9",
-                 levels=["#221a22", "#4d2236", "#8c2f55", "#d2497a", "#ff9cb8"],
-                 mark="#4a3239", puff="#e6d6dc", puff_a=0.42, beam=0.32),
-    "light": dict(bg="#ffffff", muted="#6f5960", accent="#a81d4b",
-                  levels=["#f1e9eb", "#f7c6d4", "#ec8fae", "#d2497a", "#951c46"],
-                  mark="#d4c2c8", puff="#9a8a90", puff_a=0.35, beam=0.22),
+    "dark": dict(bg="#100a0b", muted="#a38b8e", accent="#ff4655",
+                 levels=["#221a1b", "#4f1419", "#8a1a24", "#cf2232", "#ff4d5a"],
+                 mark="#4a3235", puff="#e6d8da", puff_a=0.42, beam=0.32, car_edge="#f6d5d8"),
+    "light": dict(bg="#ffffff", muted="#6f5a5c", accent="#b5121f",
+                  levels=["#f2eaea", "#f9c3c3", "#ef7c80", "#d42a36", "#8a0d18"],
+                  mark="#d6c4c6", puff="#9a8a8c", puff_a=0.35, beam=0.22, car_edge="#3a0a10"),
 }
 
 QUERY = """query($login:String!){user(login:$login){
@@ -269,7 +269,7 @@ def render(weeks, total, theme):
       '<rect x="4" y="12" width="5" height="3" rx="1" fill="#0a0607"/>'
       '<rect x="16" y="-1" width="5" height="3" rx="1" fill="#0a0607"/>'
       '<rect x="16" y="12" width="5" height="3" rx="1" fill="#0a0607"/>'
-      '<rect x="0" y="1" width="24" height="12" rx="3.5" fill="#d01936"/>'
+      f'<rect x="0" y="1" width="24" height="12" rx="3.5" fill="#d01936" stroke="{th["car_edge"]}" stroke-width="0.8"/>'
       '<rect x="4" y="3" width="4" height="8" rx="1" fill="#2a1218"/>'
       '<rect x="8" y="2.5" width="7" height="9" rx="1" fill="#b3142e"/>'
       '<rect x="15" y="2.5" width="4" height="9" rx="1" fill="#2a1218"/>'
