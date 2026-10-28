@@ -2,7 +2,7 @@
 <style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
 <rect x="0.5" y="0.5" width="1199" height="289" rx="10" fill="#ffffff" stroke="#ead7dc"/>
 <text x="40" y="44" font-size="12" letter-spacing="3.4" fill="#c8102e">UNDER THE HOOD</text>
-<text x="1160" y="44" font-size="11" fill="#6f5960" text-anchor="end">last dyno run 2026-10-27</text>
+<text x="1160" y="44" font-size="11" fill="#6f5960" text-anchor="end">last dyno run 2026-10-28</text>
 <text x="40" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">FUEL MIX</text>
 <text x="40" y="104" font-size="10" fill="#6f5960">what my repos run on</text>
 <text x="470" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="#2a1d21">BOLT-ONS</text>
