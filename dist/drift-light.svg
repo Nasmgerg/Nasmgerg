@@ -392,6 +392,7 @@
 <rect x="1120" y="106" width="16" height="16" rx="3" fill="#8a0d18"><animate attributeName="fill" values="#8a0d18;#f2eaea;#8a0d18" keyTimes="0;0.1383;0.9697" dur="23.07s" repeatCount="indefinite" calcMode="discrete"/></rect>
 <rect x="1120" y="126" width="16" height="16" rx="3" fill="#f9c3c3"><animate attributeName="fill" values="#f9c3c3;#f2eaea;#f9c3c3" keyTimes="0;0.3823;0.9697" dur="23.07s" repeatCount="indefinite" calcMode="discrete"/></rect>
 <rect x="1120" y="146" width="16" height="16" rx="3" fill="#f2eaea"/>
+<rect x="1120" y="166" width="16" height="16" rx="3" fill="#f2eaea"/>
 <g class="fx">
 <rect x="1134.31" y="94.06" width="2" height="2" fill="#d6c4c6" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1127;0.995" dur="23.07s" repeatCount="indefinite" calcMode="discrete"/></rect>
 <rect x="1138.17" y="84.84" width="2" height="2" fill="#d6c4c6" opacity="0"><animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1127;0.995" dur="23.07s" repeatCount="indefinite" calcMode="discrete"/></rect>
