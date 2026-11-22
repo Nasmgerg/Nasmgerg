@@ -1,3 +1,15 @@
+"""
+Contribution drift – a GitHub contribution-gráfodon egy piros autó halad végig
+soronként, a sorok végén driftelve fordul, és felszedi a cellákat.
+
+Használat:
+  GITHUB_TOKEN=... python drift/generate.py <felhasználónév> <kimeneti mappa>
+  python drift/generate.py --demo <kimeneti mappa>   (minta adatokkal, token nélkül)
+
+Négy fájlt készít: drift-dark.svg, drift-light.svg (a driftelős gráf)
+és stack-dark.svg, stack-light.svg (a „Motorháztető alatt” kártya).
+Csak a Python standard könyvtárát használja.
+"""
 import datetime as dt
 import json
 import math
@@ -293,7 +305,7 @@ STACK = {
 
 
 def streaks(weeks):
-    days = sorted(d for col in weeks for d in col if d)
+    days = sorted((d for col in weeks for d in col if d), key=lambda d: d[1])  # dátum szerint
     best = cur = active = 0
     for lvl, _ in days:
         if lvl > 0:
