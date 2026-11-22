@@ -187,7 +187,6 @@ def render(weeks, total, theme):
     o(f'<rect width="{W}" height="{H}" rx="10" fill="{th["bg"]}"/>')
 
     # fejléc + jelmagyarázat
-    o(f'<text x="{X0}" y="38" font-size="12" letter-spacing="3.4" fill="{th["accent"]}">CONTRIBUTION DRIFT</text>')
     lx = W - 76 - 5 * 16 - 64
     o(f'<text x="{lx - 8}" y="38" font-size="11" fill="{th["muted"]}" text-anchor="end">Less</text>')
     for i, col in enumerate(th["levels"]):
@@ -323,55 +322,62 @@ def esc(t):
 
 def render_stack(weeks, total, langs, repo_count, theme):
     th = STACK[theme]
-    W, H = 1200, 290
+    W = 1200
     best, active = streaks(weeks)
-    out = []
-    o = out.append
-    o(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
-      f'aria-label="Languages, tools and stats">')
-    o('<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>')
-    o(f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{th["bg"]}" stroke="{th["border"]}"/>')
-    o(f'<text x="40" y="44" font-size="12" letter-spacing="3.4" fill="{th["red"]}">UNDER THE HOOD</text>')
-    o(f'<text x="{W - 40}" y="44" font-size="11" fill="{th["muted"]}" text-anchor="end">'
-      f'last dyno run {dt.date.today().isoformat()}</text>')
+    body = []
+    o = body.append
+    C1, C2, C3 = 40, 460, 880          # oszlopok bal széle
+    HEAD_Y, SUB_Y, TOP = 52, 74, 112
 
-    heads = ((40, "FUEL MIX", "what my repos run on"), (470, "BOLT-ONS", "frameworks &amp; tools"),
-             (890, "DYNO SHEET", "last 12 months"))
+    heads = ((C1, "FUEL MIX", "what my repos run on"), (C2, "BOLT-ONS", "frameworks &amp; tools"),
+             (C3, "DYNO SHEET", "last 12 months"))
     for x, h, sub in heads:
-        o(f'<text x="{x}" y="88" font-size="11" font-weight="700" letter-spacing="2" fill="{th["text"]}">{h}</text>')
-        o(f'<text x="{x}" y="104" font-size="10" fill="{th["muted"]}">{sub}</text>')
-    o(f'<rect x="440" y="76" width="1" height="{H - 110}" fill="{th["border"]}"/>')
-    o(f'<rect x="860" y="76" width="1" height="{H - 110}" fill="{th["border"]}"/>')
+        o(f'<text x="{x}" y="{HEAD_Y}" font-size="16" font-weight="700" letter-spacing="2.4" fill="{th["text"]}">{h}</text>')
+        o(f'<text x="{x}" y="{SUB_Y}" font-size="13" fill="{th["muted"]}">{sub}</text>')
 
     # nyelvek
     top = langs[:6]
+    y_end = TOP
     for i, (name, share) in enumerate(top):
-        y = 134 + i * 24
-        pct = share * 100
-        o(f'<text x="40" y="{y + 4}" font-size="12" fill="{th["text"]}">{esc(name)}</text>')
-        o(f'<rect x="150" y="{y - 4}" width="200" height="8" rx="4" fill="{th["track"]}"/>')
-        o(f'<rect x="150" y="{y - 4}" width="{max(4, 200 * share / top[0][1]):.1f}" height="8" rx="4" fill="{th["bars"][i]}"/>')
-        o(f'<text x="410" y="{y + 4}" font-size="12" fill="{th["muted"]}" text-anchor="end">{pct:.0f}%</text>')
+        y = TOP + 10 + i * 34
+        o(f'<text x="{C1}" y="{y + 5}" font-size="16" fill="{th["text"]}">{esc(name)}</text>')
+        o(f'<rect x="{C1 + 140}" y="{y - 5}" width="170" height="10" rx="5" fill="{th["track"]}"/>')
+        o(f'<rect x="{C1 + 140}" y="{y - 5}" width="{max(5, 170 * share / top[0][1]):.1f}" height="10" rx="5" fill="{th["bars"][i]}"/>')
+        o(f'<text x="{C2 - 60}" y="{y + 5}" font-size="15" fill="{th["muted"]}" text-anchor="end">{share * 100:.0f}%</text>')
+        y_end = y + 12
 
     # felszereltség: piros címkék, sorba tördelve
-    x, y = 470, 124
+    x, y = C2, TOP - 8
+    right = C3 - 40
     for item in EQUIPMENT:
-        w = len(item) * 7.25 + 24
-        if x + w > 830:
-            x, y = 470, y + 34
-        o(f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="26" rx="13" fill="{th["chip_bg"]}" stroke="{th["red"]}"/>')
-        o(f'<text x="{x + w / 2:.1f}" y="{y + 17}" font-size="12" fill="{th["red"]}" text-anchor="middle">{esc(item)}</text>')
-        x += w + 8
+        w = len(item) * 9.0 + 28
+        if x + w > right:
+            x, y = C2, y + 44
+        o(f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="34" rx="17" fill="{th["chip_bg"]}" stroke="{th["red"]}" stroke-width="1.2"/>')
+        o(f'<text x="{x + w / 2:.1f}" y="{y + 22}" font-size="15" fill="{th["red"]}" text-anchor="middle">{esc(item)}</text>')
+        x += w + 10
+    chips_end = y + 34
 
     # számok
-    stats = ((total, "contributions"), (best, "day longest streak"), (active, "days on track"), (repo_count, "public builds"))
+    stats = ((total, "contributions"), (best, "day streak"), (active, "days on track"), (repo_count, "public builds"))
     for i, (val, lbl) in enumerate(stats):
-        sx = 890 + (i % 2) * 150
-        sy = 160 + (i // 2) * 76
-        o(f'<text x="{sx}" y="{sy}" font-size="34" font-weight="700" fill="{th["red"]}">{val}</text>')
-        o(f'<text x="{sx}" y="{sy + 20}" font-size="11" fill="{th["muted"]}">{lbl}</text>')
-    o('</svg>')
-    return "\n".join(out)
+        sx = C3 + (i % 2) * 150
+        sy = TOP + 40 + (i // 2) * 96
+        o(f'<text x="{sx}" y="{sy}" font-size="46" font-weight="700" fill="{th["red"]}">{val}</text>')
+        o(f'<text x="{sx}" y="{sy + 26}" font-size="14" fill="{th["muted"]}">{lbl}</text>')
+    stats_end = TOP + 40 + 96 + 26
+
+    H = int(max(y_end, chips_end, stats_end) + 52)
+    o(f'<text x="{W - 40}" y="{H - 22}" font-size="12" fill="{th["muted"]}" text-anchor="end">'
+      f'updated {dt.date.today().isoformat()}</text>')
+    o(f'<rect x="{C2 - 30}" y="{HEAD_Y - 18}" width="1" height="{H - HEAD_Y - 30}" fill="{th["border"]}"/>')
+    o(f'<rect x="{C3 - 30}" y="{HEAD_Y - 18}" width="1" height="{H - HEAD_Y - 30}" fill="{th["border"]}"/>')
+
+    head = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
+            f'aria-label="Languages, tools and stats">',
+            '<style>text{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>',
+            f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{th["bg"]}" stroke="{th["border"]}"/>']
+    return "\n".join(head + body + ["</svg>"])
 
 
 def main():
