@@ -1,5 +1,5 @@
 <p align="center">
- <img src="assets/banner.svg?v=3" alt="Nasmgerg" width="100%" />
+ <img src="assets/banner.svg?v=4" alt="Nasmgerg" width="100%" />
 </p>
 
 <br />
